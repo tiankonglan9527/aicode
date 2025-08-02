@@ -1,5 +1,6 @@
 package com.jackiy.aicode.controller;
 
+import com.jackiy.aicode.annotation.RepeatSubmit;
 import com.jackiy.aicode.common.BaseResponse;
 import com.jackiy.aicode.common.ResultUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,8 @@ public class HealthController {
     public String healthCheck1() {
         return "ok";
     }
+
+    @RepeatSubmit(limitType = RepeatSubmit.Type.PARAM, lockTime = 5)
     @GetMapping("/")
     public BaseResponse<String> healthCheck() {
         return ResultUtils.success( "ok");
