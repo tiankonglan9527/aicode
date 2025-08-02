@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/aicode.iml" filepath="$PROJECT_DIR$/.idea/aicode.iml" />
-      <module fileurl="file://$PROJECT_DIR$/aicodebackend/aicodebackend.iml" filepath="$PROJECT_DIR$/aicodebackend/aicodebackend.iml" />
     </modules>
   </component>
 </project>
