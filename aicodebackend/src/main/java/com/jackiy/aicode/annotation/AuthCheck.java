@@ -7,6 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * 权限校验注解
+ * 给方法打上，然后指定角色，满足角色的调用者才能放行
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
