@@ -41,3 +41,15 @@ knife4j:
 #      # 设置响应格式：严格按照JSON格式输出
 #      strict-json-schema: true
 #      response-format: json_object
+#    # 流式输出模型配置
+#    streaming-chat-model:
+#      base-url: https://api.deepseek.com
+#      api-key: your_api_key
+#      model-name: deepseek-chat
+#      # 开启日志
+#      log-requests: true
+#      log-responses: true
+#      # 最大输出长度
+#      max-tokens: 8192
+#      # 设置响应格式：严格按照JSON格式输出
+#      strict-json-schema: true

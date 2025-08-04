@@ -13,7 +13,6 @@ class AiCodeGeneratorServiceTest {
     @Resource
     private AiCodeGeneratorService aiCodeGeneratorService;
 
-    /// 结构优化 ////
     @Test
     void generateHtmlCode() {
         HtmlCodeResult result = aiCodeGeneratorService.generateHtmlCode("做个程序员鱼皮的工作记录小工具");
@@ -24,6 +23,5 @@ class AiCodeGeneratorServiceTest {
         MultiFileCodeResult multiFileCode = aiCodeGeneratorService.generateMultiFileCode("做个程序员鱼皮的留言板");
         Assertions.assertNotNull(multiFileCode);
     }
-    //// 结束 ////
 
 }
