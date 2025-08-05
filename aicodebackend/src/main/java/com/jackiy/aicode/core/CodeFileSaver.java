@@ -15,7 +15,9 @@ import java.nio.charset.StandardCharsets;
  * 一个工具类，把AI生成的代码文件保存到系统本地
  *
  * 可优化点：增加日期分类
+ * 已弃用，使用了模板方法模式进行了优化
  */
+@Deprecated
 public class CodeFileSaver {
 
     // 文件保存根目录：文件保存的根路径 = 当前项目的路径 + /tmp/code_output
