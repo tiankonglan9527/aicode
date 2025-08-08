@@ -16,7 +16,7 @@ import java.nio.charset.StandardCharsets;
 public abstract class CodeFileSaverTemplate<T> {
 
     // 文件保存根目录
-    protected static final String FILE_SAVE_ROOT_DIR = System.getProperty("user.dir") + "/tmp/code_output";
+    protected static final String FILE_SAVE_ROOT_DIR = System.getProperty("user.dir") + "/aicodebackend/tmp/code_output";
 
     /**
      * 模板方法：保存代码的标准流程（使用 appId）
