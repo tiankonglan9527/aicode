@@ -4,11 +4,13 @@ import com.jackiy.aicode.model.dto.app.AppAddRequest;
 import com.jackiy.aicode.model.dto.app.AppQueryRequest;
 import com.jackiy.aicode.model.dto.app.AppUpdateRequest;
 import com.jackiy.aicode.model.entity.App;
+import com.jackiy.aicode.model.entity.User;
 import com.jackiy.aicode.model.vo.AppVO;
 import com.mybatisflex.core.paginate.Page;
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;
 import jakarta.servlet.http.HttpServletRequest;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 
@@ -40,4 +42,7 @@ public interface AppService extends IService<App> {
      * @return
      */
     QueryWrapper getQueryWrapper(AppQueryRequest appQueryRequest);
+
+
+    Flux<String> chatToGenCode(Long appId, String message, User loginUser);
 }
