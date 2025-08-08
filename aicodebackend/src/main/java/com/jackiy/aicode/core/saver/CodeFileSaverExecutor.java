@@ -14,8 +14,10 @@ import java.io.File;
  */
 public class CodeFileSaverExecutor {
 
+    // HTML 代码文件保存模板
     private static final HtmlCodeFileSaverTemplate htmlCodeFileSaver = new HtmlCodeFileSaverTemplate();
 
+    // 多文件代码文件保存模板
     private static final MultiFileCodeFileSaverTemplate multiFileCodeFileSaver = new MultiFileCodeFileSaverTemplate();
 
     /**

@@ -20,6 +20,11 @@ public class AiCodeGeneratorServiceFactory {
     @Resource
     private StreamingChatModel streamingChatModel;
 
+    /**
+     * 会用动态代理创建AI代码生成器服务，注册到IOC容器
+     *
+     * @return AI代码生成器服务对象
+     */
     @Bean
     public AiCodeGeneratorService aiCodeGeneratorService() {
         // 改用builder构造，builder模式可以更灵活地配置服务

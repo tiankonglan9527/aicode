@@ -67,9 +67,15 @@ public class CodeFileSaver {
 
     /**
      * 写入单个文件
+     *
+     * @param dirPath  目录路径
+     * @param filename 文件名
+     * @param content  文件内容
      */
     private static void writeToFile(String dirPath, String filename, String content) {
-        String filePath = dirPath + File.separator + filename;
+        // 文件路径 = 目录路径/文件名 （File.separator 跨平台文件路径分隔符）
+        String filePath = dirPath + File.separator + filename;  // 如：/tmp/code_output/html_123456/index.html
+        // 把文件内容写入到这个路径对应的文件
         FileUtil.writeString(content, filePath, StandardCharsets.UTF_8);
     }
 }

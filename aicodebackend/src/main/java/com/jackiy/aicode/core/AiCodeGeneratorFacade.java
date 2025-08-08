@@ -28,7 +28,7 @@ public class AiCodeGeneratorFacade {
     private AiCodeGeneratorService aiCodeGeneratorService;
 
     /**
-     * 统一入口：根据类型生成并保存代码
+     * 统一入口：根据类型生成并保存代码（结构输出）
      *
      * @param userMessage     用户提示词
      * @param codeGenTypeEnum 生成类型

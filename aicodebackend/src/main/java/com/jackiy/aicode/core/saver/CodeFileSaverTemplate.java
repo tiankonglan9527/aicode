@@ -20,6 +20,7 @@ public abstract class CodeFileSaverTemplate<T> {
 
     /**
      * 模板方法：保存代码的标准流程
+     * 验证输入 -> 构建目录 -> 保存文件 -> 返回目录文件对象
      *
      * @param result 代码结果对象（HtmlCodeResult、MultiFileCodeResult）
      * @return 保存的目录

@@ -22,6 +22,7 @@ public class HtmlCodeFileSaverTemplate extends CodeFileSaverTemplate<HtmlCodeRes
         writeToFile(baseDirPath, "index.html", result.getHtmlCode());
     }
 
+    // 验证 HTML 代码
     @Override
     protected void validateInput(HtmlCodeResult result) {
         super.validateInput(result);

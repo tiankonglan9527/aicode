@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 /**
  * 代码解析器
- * 提供静态方法解析不同类型的代码内容
+ * 提供静态方法用正则表达式解析不同类型的代码内容
  *
  * 从AI生成的代码中提取出HTML、CSS、JS代码
  * 已弃用，使用了策略模式进行了优化
@@ -32,7 +32,7 @@ public class CodeParser {
      */
     public static HtmlCodeResult parseHtmlCode(String codeContent) {
         HtmlCodeResult result = new HtmlCodeResult();
-        // 提取 HTML 代码
+        // 解析：提取 HTML 代码
         String htmlCode = extractHtmlCode(codeContent);
         if (htmlCode != null && !htmlCode.trim().isEmpty()) {
             result.setHtmlCode(htmlCode.trim());
