@@ -43,6 +43,9 @@ public interface AppService extends IService<App> {
      */
     QueryWrapper getQueryWrapper(AppQueryRequest appQueryRequest);
 
-
+    // 应用对话
     Flux<String> chatToGenCode(Long appId, String message, User loginUser);
+
+    // 部署应用
+    String deployApp(Long appId, User loginUser);
 }
