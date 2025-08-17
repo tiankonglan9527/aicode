@@ -11,7 +11,9 @@ package com.jackiy.aicode.ai;
 
 import com.jackiy.aicode.ai.model.HtmlCodeResult;
 import com.jackiy.aicode.ai.model.MultiFileCodeResult;
+import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;
+import dev.langchain4j.service.UserMessage;
 import reactor.core.publisher.Flux;
 
 public interface AiCodeGeneratorService {
@@ -34,7 +36,7 @@ public interface AiCodeGeneratorService {
     @SystemMessage(fromResource = "prompt/codegen-multi-file-system-prompt.txt")
     MultiFileCodeResult generateMultiFileCode(String userMessage);
 
-    ////######### 流失调用生成代码 #########////
+    ////######### 流式调用生成代码 #########////
 
     /**
      * 生成 HTML 代码（流式）
@@ -54,6 +56,15 @@ public interface AiCodeGeneratorService {
     @SystemMessage(fromResource = "prompt/codegen-multi-file-system-prompt.txt")
     Flux<String> generateMultiFileCodeStream(String userMessage);
 
-    ////######### 流失调用生成代码 #########////
+    /**
+     * 生成 Vue 项目代码（流式）
+     *
+     * @param userMessage 用户消息
+     * @return 生成过程的流式响应
+     */
+    @SystemMessage(fromResource = "prompt/codegen-vue-project-system-prompt.txt")
+    Flux<String> generateVueProjectCodeStream(@MemoryId long appId, @UserMessage String userMessage);
+
+    ////######### 流式调用生成代码 #########////
 }
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>人事管理系统</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>人事管理系统</h1>
+  </header>
+
+  <main>
+    <!-- 搜索栏 -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="根据姓名或部门搜索员工..." />
+    </div>
+
+    <!-- 员工表单 -->
+    <form id="employeeForm">
+      <input type="text" id="name" placeholder="姓名" required />
+      <input type="text" id="position" placeholder="职位" required />
+      <input type="text" id="department" placeholder="部门" required />
+      <input type="date" id="hireDate" required />
+      <button type="submit">添加员工</button>
+    </form>
+
+    <!-- 员工列表 -->
+    <div class="employee-list" id="employeeList">
+      <!-- 员工条目将由 JS 动态插入 -->
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 人事管理系统</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

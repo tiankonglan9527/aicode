@@ -20,6 +20,29 @@ public class AicodebackendApplication {
      */
     public static void main(String[] args) {
         SpringApplication.run(AicodebackendApplication.class, args);
+        A a = new D();
+        a.a();
     }
 
 }
+
+interface A {
+    void a();
+}
+
+interface B extends A {
+    void a();
+}
+interface C extends A {
+    void a();
+}
+class D implements B, C {
+    public void a() {
+        System.out.println("a");
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+
