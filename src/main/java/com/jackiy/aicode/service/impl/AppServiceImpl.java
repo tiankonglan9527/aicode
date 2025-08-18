@@ -5,6 +5,8 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
+import com.mybatisflex.core.query.QueryWrapper;
+import com.mybatisflex.spring.service.impl.ServiceImpl;
 import com.jackiy.aicode.constant.AppConstant;
 import com.jackiy.aicode.core.AiCodeGeneratorFacade;
 import com.jackiy.aicode.core.builder.VueProjectBuilder;
@@ -12,19 +14,18 @@ import com.jackiy.aicode.core.handler.StreamHandlerExecutor;
 import com.jackiy.aicode.exception.BusinessException;
 import com.jackiy.aicode.exception.ErrorCode;
 import com.jackiy.aicode.exception.ThrowUtils;
-import com.jackiy.aicode.mapper.AppMapper;
 import com.jackiy.aicode.model.dto.app.AppQueryRequest;
 import com.jackiy.aicode.model.entity.App;
+import com.jackiy.aicode.mapper.AppMapper;
 import com.jackiy.aicode.model.entity.User;
-import com.jackiy.aicode.model.enums.CodeGenTypeEnum;
 import com.jackiy.aicode.model.enums.ChatHistoryMessageTypeEnum;
+import com.jackiy.aicode.model.enums.CodeGenTypeEnum;
 import com.jackiy.aicode.model.vo.AppVO;
 import com.jackiy.aicode.model.vo.UserVO;
 import com.jackiy.aicode.service.AppService;
 import com.jackiy.aicode.service.ChatHistoryService;
+import com.jackiy.aicode.service.ScreenshotService;
 import com.jackiy.aicode.service.UserService;
-import com.mybatisflex.core.query.QueryWrapper;
-import com.mybatisflex.spring.service.impl.ServiceImpl;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -60,6 +61,9 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
 
     @Resource
     private VueProjectBuilder vueProjectBuilder;
+
+    @Resource
+    private ScreenshotService screenshotService;
 
     @Override
     public Flux<String> chatToGenCode(Long appId, String message, User loginUser) {
@@ -140,8 +144,32 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
         updateApp.setDeployedTime(LocalDateTime.now());
         boolean updateResult = this.updateById(updateApp);
         ThrowUtils.throwIf(!updateResult, ErrorCode.OPERATION_ERROR, "更新应用部署信息失败");
-        // 10. 返回可访问的 URL 地址
-        return String.format("%s/%s", AppConstant.CODE_DEPLOY_HOST, deployKey);
+        // 10. 得到可访问的 URL 地址
+        String appDeployUrl = String.format("%s/%s", AppConstant.CODE_DEPLOY_HOST, deployKey);
+        // 11. 异步生成截图并且更新应用封面
+        generateAppScreenshotAsync(appId, appDeployUrl);
+        return appDeployUrl;
+    }
+
+    /**
+     * 异步生成应用截图并更新封面
+     *
+     * @param appId  应用ID
+     * @param appUrl 应用访问URL
+     */
+    @Override
+    public void generateAppScreenshotAsync(Long appId, String appUrl) {
+        // 使用虚拟线程并执行
+        Thread.startVirtualThread(() -> {
+            // 调用截图服务生成截图并上传
+            String screenshotUrl = screenshotService.generateAndUploadScreenshot(appUrl);
+            // 更新数据库的封面
+            App updateApp = new App();
+            updateApp.setId(appId);
+            updateApp.setCover(screenshotUrl);
+            boolean updated = this.updateById(updateApp);
+            ThrowUtils.throwIf(!updated, ErrorCode.OPERATION_ERROR, "更新应用封面字段失败");
+        });
     }
 
     @Override

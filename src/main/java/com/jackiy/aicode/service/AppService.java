@@ -1,15 +1,11 @@
 package com.jackiy.aicode.service;
 
-import com.jackiy.aicode.model.dto.app.AppAddRequest;
+import com.mybatisflex.core.query.QueryWrapper;
+import com.mybatisflex.core.service.IService;
 import com.jackiy.aicode.model.dto.app.AppQueryRequest;
-import com.jackiy.aicode.model.dto.app.AppUpdateRequest;
 import com.jackiy.aicode.model.entity.App;
 import com.jackiy.aicode.model.entity.User;
 import com.jackiy.aicode.model.vo.AppVO;
-import com.mybatisflex.core.paginate.Page;
-import com.mybatisflex.core.query.QueryWrapper;
-import com.mybatisflex.core.service.IService;
-import jakarta.servlet.http.HttpServletRequest;
 import reactor.core.publisher.Flux;
 
 import java.util.List;
@@ -18,6 +14,33 @@ import java.util.List;
  * 应用 服务层。
  */
 public interface AppService extends IService<App> {
+
+    /**
+     * 通过对话生成应用代码
+     *
+     * @param appId 应用 ID
+     * @param message 提示词
+     * @param loginUser 登录用户
+     * @return
+     */
+    Flux<String> chatToGenCode(Long appId, String message, User loginUser);
+
+    /**
+     * 应用部署
+     *
+     * @param appId 应用 ID
+     * @param loginUser 登录用户
+     * @return 可访问的部署地址
+     */
+    String deployApp(Long appId, User loginUser);
+
+    /**
+     * 异步生成应用截图并更新封面
+     *
+     * @param appId  应用ID
+     * @param appUrl 应用访问URL
+     */
+    void generateAppScreenshotAsync(Long appId, String appUrl);
 
     /**
      * 获取应用封装类
@@ -43,9 +66,4 @@ public interface AppService extends IService<App> {
      */
     QueryWrapper getQueryWrapper(AppQueryRequest appQueryRequest);
 
-    // 应用对话
-    Flux<String> chatToGenCode(Long appId, String message, User loginUser);
-
-    // 部署应用
-    String deployApp(Long appId, User loginUser);
 }
