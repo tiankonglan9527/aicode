@@ -1,0 +1,1 @@
+import{_ as o,o as n,c as s,a as e}from"./index-a0f7a079.js";const _={},a={class:"about"};function c(l,t){return n(),s("div",a,t[0]||(t[0]=[e("h1",null,"关于我",-1),e("p",null,"我是一名前端开发者，热爱技术分享和写作。",-1),e("p",null,"这个博客记录了我的学习和思考。",-1)]))}const u=o(_,[["render",c]]);export{u as default};

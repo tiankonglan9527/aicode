@@ -1,0 +1,1 @@
+.articles-page{padding:20px}.filters{margin-bottom:20px;display:flex;gap:10px}.articles{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}.article-card{border:1px solid #ddd;padding:20px;border-radius:8px}.article-card h2{margin-top:0}
