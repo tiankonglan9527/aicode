@@ -47,6 +47,12 @@ const featuredWorks = [
   margin-top: 30px;
 }
 
+.featured-works h2 {
+  color: #6a5acd;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
 .works-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
