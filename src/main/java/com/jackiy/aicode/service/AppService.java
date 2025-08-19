@@ -1,5 +1,6 @@
 package com.jackiy.aicode.service;
 
+import com.jackiy.aicode.model.dto.app.AppAddRequest;
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;
 import com.jackiy.aicode.model.dto.app.AppQueryRequest;
@@ -66,4 +67,6 @@ public interface AppService extends IService<App> {
      */
     QueryWrapper getQueryWrapper(AppQueryRequest appQueryRequest);
 
+
+    Long createApp(AppAddRequest appAddRequest, User loginUser);
 }
