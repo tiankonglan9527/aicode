@@ -6,7 +6,7 @@ import com.jackiy.aicode.exception.ErrorCode;
 import com.jackiy.aicode.exception.ThrowUtils;
 import com.jackiy.aicode.manager.CosManager;
 import com.jackiy.aicode.service.ScreenshotService;
-import com.jackiy.aicode.uitils.WebScreenshotUtils;
+import com.jackiy.aicode.utils.WebScreenshotUtils;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

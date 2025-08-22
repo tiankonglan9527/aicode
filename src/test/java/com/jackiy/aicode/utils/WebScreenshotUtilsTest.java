@@ -1,4 +1,4 @@
-package com.jackiy.aicode.uitils;
+package com.jackiy.aicode.utils;
 
 
 import lombok.extern.slf4j.Slf4j;

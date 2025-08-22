@@ -1,4 +1,4 @@
-package com.jackiy.aicode.uitils;
+package com.jackiy.aicode.utils;
 
 import cn.hutool.core.img.ImgUtil;
 import cn.hutool.core.io.FileUtil;
@@ -6,7 +6,6 @@ import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import com.jackiy.aicode.exception.BusinessException;
 import com.jackiy.aicode.exception.ErrorCode;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.JavascriptExecutor;
